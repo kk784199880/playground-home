@@ -1,48 +1,76 @@
+export type CharacterAction =
+  | 'shootJump'
+  | 'sitBounce'
+  | 'jumpLoop'
+  | 'runInPlace'
+  | 'gamingBounce';
+
 export interface CharacterData {
   id: string;
-  action: 'shooting' | 'jumping' | 'gaming' | 'waving' | 'squatting';
-  attachToObjectId: string;
-  offsetX: number;
-  offsetY: number;
-  delay: number;
+  action: CharacterAction;
+  left: string;
+  right: string;
+  bottom: string;
+  height: number;
+  zIndex: number;
+  entranceDelay: number;
   color: string;
 }
 
 export const heroCharacters: CharacterData[] = [
   {
-    id: 'char-1',
-    action: 'shooting',
-    attachToObjectId: 'basketball-main',
-    offsetX: 40,
-    offsetY: -80,
-    delay: 1.0,
+    id: 'person-01',
+    action: 'shootJump',
+    left: '7%',
+    right: '',
+    bottom: '42%',
+    height: 135,
+    zIndex: 12,
+    entranceDelay: 1.2,
     color: '#f97316',
   },
   {
-    id: 'char-2',
-    action: 'jumping',
-    attachToObjectId: 'dumbbell-main',
-    offsetX: -35,
-    offsetY: -60,
-    delay: 1.3,
-    color: '#a78bfa',
+    id: 'person-02',
+    action: 'sitBounce',
+    left: '33%',
+    right: '',
+    bottom: '16%',
+    height: 130,
+    zIndex: 12,
+    entranceDelay: 1.4,
+    color: '#c084fc',
   },
   {
-    id: 'char-3',
-    action: 'gaming',
-    attachToObjectId: 'gamepad-main',
-    offsetX: 35,
-    offsetY: 45,
-    delay: 1.5,
+    id: 'person-03',
+    action: 'jumpLoop',
+    left: '44%',
+    right: '',
+    bottom: '58%',
+    height: 138,
+    zIndex: 12,
+    entranceDelay: 1.55,
+    color: '#fbbf24',
+  },
+  {
+    id: 'person-04',
+    action: 'runInPlace',
+    left: '58%',
+    right: '',
+    bottom: '30%',
+    height: 132,
+    zIndex: 12,
+    entranceDelay: 1.7,
     color: '#22d3ee',
   },
   {
-    id: 'char-4',
-    action: 'waving',
-    attachToObjectId: 'chair-main',
-    offsetX: -50,
-    offsetY: -50,
-    delay: 1.7,
-    color: '#fbbf24',
+    id: 'person-05',
+    action: 'gamingBounce',
+    left: '',
+    right: '10%',
+    bottom: '56%',
+    height: 125,
+    zIndex: 12,
+    entranceDelay: 1.9,
+    color: '#f472b6',
   },
 ];
