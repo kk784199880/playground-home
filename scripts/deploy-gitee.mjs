@@ -3,7 +3,7 @@
  * Usage: node scripts/deploy-gitee.mjs
  */
 import { execSync } from 'child_process';
-import { existsSync } from 'fs';
+import { existsSync, rmSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -29,45 +29,41 @@ if (!existsSync(distDir)) {
   process.exit(1);
 }
 
-// Create a temp worktree for the gitee-pages branch
-const tmpDir = join(ROOT, '.gitee-pages-tmp');
-
-// Remove old tmp if exists
-try { run(`rm -rf "${tmpDir}"`, { shell: true }); } catch {}
+// Remember current branch
+const currentBranch = execSync('git rev-parse --abbrev-ref HEAD', { cwd: ROOT, encoding: 'utf-8' }).trim();
+console.log(`  当前分支: ${currentBranch}`);
 
 try {
-  // Create gitee-pages as orphan branch
-  try {
-    run('git checkout --orphan gitee-pages');
-    run('git rm -rf --quiet .', { shell: true });
-    // Copy dist contents to root
-    run(`cp -r "${distDir}"/* .`, { shell: true });
-    run(`cp -r "${distDir}"/.nojekyll . 2>/dev/null || true`, { shell: true });
-    // Create .nojekyll for GitHub Pages (harmless for Gitee)
-    run('touch .nojekyll');
-    run('git add -A');
-    run('git commit -m "Deploy to Gitee Pages"');
-    run('git push -f gitee gitee-pages');
-  } catch (e) {
-    // Branch might already exist, update it
-    run('git checkout master');
-    try { run('git branch -D gitee-pages'); } catch {}
-    run('git checkout --orphan gitee-pages');
-    run('git rm -rf --quiet .', { shell: true });
-    run(`cp -r "${distDir}"/* .`, { shell: true });
-    run('touch .nojekyll');
-    run('git add -A');
-    run('git commit -m "Deploy to Gitee Pages"');
-    run('git push -f gitee gitee-pages');
-  }
+  // Remove existing local gitee-pages if any
+  try { run('git branch -D gitee-pages', { stdio: 'pipe' }); } catch {}
+
+  // Create clean orphan branch
+  run('git checkout --orphan gitee-pages');
+
+  // Remove everything tracked
+  try { run('git rm -rf --quiet .', { stdio: 'pipe' }); } catch {}
+
+  // Clean untracked files (node_modules etc) — keep only .git
+  run('git clean -fdx --quiet');
+
+  // Copy dist contents to root
+  run(`cp -r "${distDir}"/* .`);
+  run('touch .nojekyll');
+
+  // Stage and commit
+  run('git add -A');
+  run('git commit -m "Deploy to Gitee Pages"');
+  run('git push -f gitee gitee-pages');
+
+  console.log('\n✅ 部署完成！');
+} catch (e) {
+  console.error('\n❌ 部署失败:', e.message);
 } finally {
-  // Return to master
-  run('git checkout master');
-  try { run(`rm -rf "${tmpDir}"`, { shell: true }); } catch {}
-  // Clean up local gitee-pages branch
-  try { run('git branch -D gitee-pages'); } catch {}
+  // Return to original branch
+  console.log(`\n↩ 切换回 ${currentBranch}...`);
+  try { run(`git checkout ${currentBranch}`, { stdio: 'pipe' }); } catch {}
+  try { run('git branch -D gitee-pages', { stdio: 'pipe' }); } catch {}
 }
 
-console.log('\n✅ 部署完成！');
 console.log('   现在去 Gitee 开启 Pages:');
 console.log('   https://gitee.com/kk784199880/playground-home/pages\n');
