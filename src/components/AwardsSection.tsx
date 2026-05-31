@@ -27,7 +27,7 @@ const awardLogoMap: Record<string, LogoInfo> = {
   'IF ':       { src: '/assets/awards/ifdesign.svg', invert: false },
   EPDA:        { src: '/assets/awards/epda.png', invert: false },
   CORE77:      { src: '/assets/awards/core77.png', invert: true },
-  SPARK:       { src: '/assets/awards/spark.jpg', invert: false },
+  SPARK:       { src: '/assets/awards/spark.png', invert: true },
 };
 
 function getLogo(name: string): LogoInfo | null {
