@@ -17,9 +17,9 @@ interface AwardGroup {
 
 // Map award name prefix to logo file
 const awardLogoMap: Record<string, string> = {
-  Pentawards: '/assets/awards/pentawards.svg',
+  Pentawards: '/assets/awards/pentawards.png',
   'K-DESIGN': '/assets/awards/kdesign.svg',
-  'IF ':       '/assets/awards/ifdesign.png',
+  'IF ':       '/assets/awards/ifdesign.svg',
   EPDA:        '/assets/awards/epda.png',
   CORE77:      '/assets/awards/core77.png',
   SPARK:       '/assets/awards/spark.svg',
