@@ -8,6 +8,8 @@ interface Props {
 const links = [
   { label: 'Works', href: '#works' },
   { label: 'Research', href: '#research' },
+  { label: 'Awards', href: '#awards' },
+  { label: 'Timeline', href: '#timeline' },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -43,58 +45,58 @@ const DockNav: FC<Props> = ({ reducedMotion }) => {
           ease: [0.25, 0.46, 0.45, 0.94],
         }}
       >
-      {/* Left badge */}
-      <span
-        className="px-3 py-1 rounded-full font-mono tracking-[0.12em] text-white/25"
-        style={{
-          fontSize: '0.6rem',
-          background: 'rgba(255,255,255,0.04)',
-          border: '1px solid rgba(255,255,255,0.06)',
-        }}
-      >
-        WUFAN
-      </span>
-
-      {/* Nav links */}
-      {links.map((link) => (
-        <motion.a
-          key={link.label}
-          href={link.href}
-          className="relative px-3.5 py-1 rounded-full font-mono tracking-[0.1em] transition-colors"
+        {/* Left badge */}
+        <span
+          className="px-3 py-1 rounded-full font-mono tracking-[0.12em] text-white/25"
           style={{
             fontSize: '0.6rem',
-            color: 'rgba(255,255,255,0.38)',
+            background: 'rgba(255,255,255,0.04)',
+            border: '1px solid rgba(255,255,255,0.06)',
+          }}
+        >
+          WUFAN
+        </span>
+
+        {/* Nav links */}
+        {links.map((link) => (
+          <motion.a
+            key={link.label}
+            href={link.href}
+            className="relative px-3 py-1 rounded-full font-mono tracking-[0.1em] transition-colors"
+            style={{
+              fontSize: '0.6rem',
+              color: 'rgba(255,255,255,0.38)',
+            }}
+            whileHover={{
+              color: '#fff',
+              backgroundColor: 'rgba(255,255,255,0.06)',
+            }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {link.label}
+          </motion.a>
+        ))}
+
+        {/* Right CTA button */}
+        <motion.a
+          href="#contact"
+          className="px-3.5 py-1 rounded-full font-mono tracking-[0.1em]"
+          style={{
+            fontSize: '0.6rem',
+            background: 'rgba(139,92,246,0.28)',
+            color: '#c4b5fd',
+            border: '1px solid rgba(139,92,246,0.25)',
           }}
           whileHover={{
-            color: '#fff',
-            backgroundColor: 'rgba(255,255,255,0.06)',
+            background: 'rgba(139,92,246,0.45)',
+            color: '#e9d5ff',
+            border: '1px solid rgba(139,92,246,0.5)',
+            scale: 1.03,
           }}
           whileTap={{ scale: 0.95 }}
         >
-          {link.label}
+          Contact Me
         </motion.a>
-      ))}
-
-      {/* Right CTA button */}
-      <motion.a
-        href="#contact"
-        className="px-3.5 py-1 rounded-full font-mono tracking-[0.1em]"
-        style={{
-          fontSize: '0.6rem',
-          background: 'rgba(139,92,246,0.28)',
-          color: '#c4b5fd',
-          border: '1px solid rgba(139,92,246,0.25)',
-        }}
-        whileHover={{
-          background: 'rgba(139,92,246,0.45)',
-          color: '#e9d5ff',
-          border: '1px solid rgba(139,92,246,0.5)',
-          scale: 1.03,
-        }}
-        whileTap={{ scale: 0.95 }}
-      >
-        Contact Me
-      </motion.a>
       </motion.nav>
     </div>
   );
