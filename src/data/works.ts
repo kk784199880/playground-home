@@ -11,10 +11,8 @@ export interface WorkItem {
   link?: string;
 }
 
-// Placeholder data — pending real content from Puxiang (https://www.puxiang.com/wuxiaofan)
-// Puxiang requires slider captcha verification and could not be accessed automatically.
-// Replace image paths and details with actual Puxiang project data when available.
-// Images should be placed in public/assets/works/ with English kebab-case filenames.
+// Data extracted from Puxiang — https://www.puxiang.com/wuxiaofan
+// Images downloaded from Puxiang CDN and placed in public/assets/works/
 
 const works: WorkItem[] = [
   {
@@ -24,10 +22,11 @@ const works: WorkItem[] = [
     category: 'Industrial Design',
     year: '2021',
     award: 'Spark Silver · Core77 Winner · EPDA Top Design',
-    description: 'A one-handed measuring ruler that redefines ergonomic precision, allowing intuitive single-hand operation without compromising accuracy.',
-    tags: ['Ergonomic', 'Measuring Tool', 'Universal Design'],
+    description:
+      'A one-handed measuring ruler designed for users with single-arm disabilities, allowing them to independently measure objects and curved surfaces. Through an innovative nano-suction mechanism, One Hand enables quick one-handed operation, bringing warmth and dignity to inclusive design.',
+    tags: ['Inclusive Design', 'Ergonomic', 'Measuring Tool', 'Nano-Suction'],
     image: '/assets/works/one-hand.jpg',
-    link: 'https://www.puxiang.com/wuxiaofan',
+    link: 'https://www.puxiang.com/galleries/8ad22fb08aa04b890f5473f52b29aa18',
   },
   {
     id: 'pottery',
@@ -36,34 +35,50 @@ const works: WorkItem[] = [
     category: 'Packaging Design',
     year: '2022',
     award: 'Pentawards Finalist',
-    description: 'Traditional ceramic ritual language reimagined through modern packaging design, bridging ancient craftsmanship with contemporary aesthetics.',
-    tags: ['Ceramic', 'Cultural Heritage', 'Gift Packaging'],
+    description:
+      'A baijiu liquor packaging that blends traditional pottery craftsmanship with bronze vessel aesthetics. The bottle is handcrafted from clay with a cork stopper, featuring calligraphic labels depicting the traditional Chinese bow of respect — transforming a liquor container into a work of art.',
+    tags: ['Ceramic Craft', 'Cultural Heritage', 'Liquor Packaging', 'Sustainable'],
     image: '/assets/works/pottery.jpg',
-    link: 'https://www.puxiang.com/wuxiaofan',
+    link: 'https://www.puxiang.com/galleries/b2d9098ab5181a656396251a731bc3c8',
   },
   {
     id: 'reuse',
     title: 'Reuse',
-    titleZh: '可持续展示包装',
-    category: 'Sustainable Design',
+    titleZh: '可持续显示器包装',
+    category: 'Sustainable Packaging',
     year: '2021',
-    award: 'Spark Finalist · K-DESIGN Finalist',
-    description: 'Circular packaging innovation for sustainable display systems, designed for disassembly and material recovery after exhibition use.',
-    tags: ['Circular Economy', 'Exhibition', 'Material Innovation'],
+    award: 'Red Dot Finalist · Spark Winner',
+    description:
+      'A sustainable monitor packaging system that transforms into a functional display stand after unboxing. Designed for material recovery and reuse, the corrugated structure eliminates foam and plastic while providing equal or better protection during shipping.',
+    tags: ['Circular Economy', 'Structural Packaging', 'Green Design', 'Concept Design'],
     image: '/assets/works/reuse.jpg',
-    link: 'https://www.puxiang.com/wuxiaofan',
+    link: 'https://www.puxiang.com/galleries/8641d02f0f4a558f2b11244010ac92a0',
   },
   {
-    id: 'focus',
-    title: 'Focus',
-    titleZh: '专注力工具',
-    category: 'Product Design',
-    year: '2022',
-    award: 'Spark Finalist',
-    description: 'A minimalist attention-management tool that reshapes focus through form — reducing cognitive noise with deliberate tactile interaction.',
-    tags: ['Minimalist', 'Cognitive Design', 'Wellness'],
-    image: '/assets/works/focus.jpg',
-    link: 'https://www.puxiang.com/wuxiaofan',
+    id: 'mask',
+    title: 'Easy-Disassembly Mask',
+    titleZh: '易拆卸口罩',
+    category: 'Sustainable Design',
+    year: '2021',
+    award: 'Spark Bronze · EPDA Honorable Mention',
+    description:
+      'A modular face mask designed for easy separation of cover and strap, solving the environmental crisis of single-piece disposable masks. The straps use recycled feathers that biodegrade naturally, while the cover attaches via hook-and-loop for quick replacement.',
+    tags: ['Medical Design', 'Modular System', 'Biodegradable', 'Sustainable'],
+    image: '/assets/works/mask.jpg',
+    link: 'https://www.puxiang.com/galleries/6b5460b62e09b6a65788593264040b19',
+  },
+  {
+    id: 'junde',
+    title: 'Junde',
+    titleZh: '君德·篆书文创家具',
+    category: 'Furniture Design',
+    year: '2025',
+    award: undefined,
+    description:
+      'A cultural creative furniture series that distills ancient Chinese seal script (篆书) into modern furniture forms. By reinterpreting traditional calligraphy through contemporary design language, each piece makes Chinese cultural heritage tangible and livable in everyday spaces.',
+    tags: ['Seal Script', 'Modern Furniture', 'Cultural Heritage', 'Chinese Tradition'],
+    image: '/assets/works/junde.jpg',
+    link: 'https://www.puxiang.com/galleries/66a09ded66962a33501fd6eea6762480',
   },
 ];
 
