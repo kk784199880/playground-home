@@ -79,23 +79,23 @@ const AboutSection: FC<Props> = ({ reducedMotion }) => {
               2019年学士、2022年MFA硕士毕业于湖南工业大学。2022年6月入职广州软件学院任教，2026年7月离职，同年9月入学湖南工业大学攻读全日制设计学博士学位。
             </p>
             <p>
-              He has published <strong className="text-white/75">15+ papers</strong> in journals including{' '}
-              <em>Biomimetics</em> (SCIE JCR Q1), <em>Results in Engineering</em> (EI, IF 7.9), and leading CSSCI journals.
-              His research spans biomimetic metamaterials, AIGC-aided design, and the modern transformation of traditional crafts.
+              He has published <strong className="text-white/75">12 papers</strong> in journals including{' '}
+              <em>PLOS ONE</em> (SCI JCR Q2), <em>Biomimetics</em> (SCI JCR Q1), and <em>Results in Engineering</em> (EI, JCR Q2).
+              His research spans grounded theory, biomimetic metamaterials, AIGC-aided design, and the modern transformation of traditional crafts.
             </p>
 
             {/* Stats cards */}
             <div className="grid grid-cols-3 gap-3 pt-3">
               <div className="text-center py-4 rounded-xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                <p className="font-display text-2xl font-bold text-white">15+</p>
+                <p className="font-display text-2xl font-bold text-white">12</p>
                 <p className="text-[0.55rem] tracking-[0.12em] mt-1 text-white/25">Publications</p>
               </div>
               <div className="text-center py-4 rounded-xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                <p className="font-display text-2xl font-bold text-white">19</p>
+                <p className="font-display text-2xl font-bold text-white">20</p>
                 <p className="text-[0.55rem] tracking-[0.12em] mt-1 text-white/25">Intl. Awards</p>
               </div>
               <div className="text-center py-4 rounded-xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                <p className="font-display text-2xl font-bold text-white">6+</p>
+                <p className="font-display text-2xl font-bold text-white">6</p>
                 <p className="text-[0.55rem] tracking-[0.12em] mt-1 text-white/25">Patents</p>
               </div>
             </div>

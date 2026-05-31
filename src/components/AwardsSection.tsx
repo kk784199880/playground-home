@@ -5,22 +5,49 @@ interface Props {
   reducedMotion: boolean;
 }
 
-const awards = [
+const awardsByYear = [
   {
     year: '2025',
-    items: ['KDESIGN WINNER', 'Pentawards Finalist', 'IF SHORTLIST 300'],
+    items: [
+      { name: 'Pentawards 铜奖', work: 'Leng Cui' },
+      { name: 'K-DESIGN WINNER', work: 'GREEN WALKER' },
+      { name: 'IF STUDENT AWARD TOP 300', work: 'Gradually Entering the Chess World' },
+      { name: 'EPDA WINNER ×3', work: 'Tang Grace / Lengcui / Chess Realm' },
+      { name: 'EPDA Honorable Mention', work: 'THE WEIGHT OF NEW BLOOD' },
+    ],
   },
   {
     year: '2024',
-    items: ['IF DESIGN WINNER', 'IF SHORTLIST 300'],
+    items: [
+      { name: 'IF DESIGN AWARD WINNER', work: 'zhuchun' },
+      { name: 'IF STUDENT AWARD TOP 300', work: 'BAMBUREVIVE CHAIR' },
+      { name: 'Pentawards NOMINATION', work: 'YANPOU' },
+    ],
   },
   {
     year: '2023',
-    items: ['EPDA TOP DESIGN', 'EPDA WINNER ×2', 'Spark FINALIST ×3'],
+    items: [
+      { name: 'EPDA TOP DESIGN', work: 'STARRY-Braille Generator' },
+    ],
   },
   {
-    year: '2021–22',
-    items: ['Pentawards Bronze', 'Core77 Winner ×2', 'Spark Silver', 'WPO WorldStar Student'],
+    year: '2022',
+    items: [
+      { name: 'EPDA TOP DESIGN', work: 'One Hand Measuring Ruler' },
+      { name: 'CORE77 DESIGN AWARDS', work: 'One Hand Measuring Ruler' },
+      { name: 'Pentawards NOMINATION', work: 'Etiquette of Pottery' },
+    ],
+  },
+  {
+    year: '2021',
+    items: [
+      { name: 'SPARK Silver', work: 'One-Hand Measuring Ruler' },
+      { name: 'SPARK Silver', work: 'Shockproof & Cushioning Goblet Package' },
+      { name: 'SPARK Bronze', work: 'Easy-Disassembly Mask' },
+      { name: 'Pentawards BRONZE', work: 'DELICATE RICE LIQUOR' },
+      { name: 'EPDA Honorable Mention', work: 'Easy-Disassembly Mask' },
+      { name: 'HUT 研究生国家奖学金', work: '' },
+    ],
   },
 ];
 
@@ -57,19 +84,25 @@ const AwardsSection: FC<Props> = ({ reducedMotion }) => {
           </span>
         </motion.h2>
 
-        {/* Award cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-          {awards.map((a, i) => (
+        {/* Award cards by year */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+          {awardsByYear.map((a, i) => (
             <motion.div
               key={a.year}
-              className="p-5 rounded-2xl text-center"
+              className="p-5 rounded-2xl"
               style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)' }}
               initial={init} whileInView="visible" variants={variants} custom={i + 2} viewport={{ once: true }}
+              whileHover={{ borderColor: 'rgba(139,92,246,0.25)', background: 'rgba(139,92,246,0.03)' }}
             >
-              <p className="font-mono text-[0.5rem] tracking-[0.2em] mb-4 text-white/15">{a.year}</p>
-              <div className="space-y-2">
+              <p className="font-mono text-[0.55rem] tracking-[0.2em] mb-4 text-purple-400/70">{a.year}</p>
+              <div className="space-y-2.5">
                 {a.items.map((item) => (
-                  <p key={item} className="text-white/65 text-xs font-semibold leading-snug">{item}</p>
+                  <div key={item.name + item.work}>
+                    <p className="text-white/70 text-xs font-semibold leading-snug">{item.name}</p>
+                    {item.work && (
+                      <p className="text-white/20 text-[0.6rem] italic mt-0.5">{item.work}</p>
+                    )}
+                  </div>
                 ))}
               </div>
             </motion.div>
@@ -79,10 +112,10 @@ const AwardsSection: FC<Props> = ({ reducedMotion }) => {
         {/* Big numbers */}
         <motion.div
           className="grid grid-cols-3 gap-6 text-center max-w-lg mx-auto"
-          initial={init} whileInView="visible" variants={variants} custom={6} viewport={{ once: true }}
+          initial={init} whileInView="visible" variants={variants} custom={7} viewport={{ once: true }}
         >
           <div>
-            <p className="font-display text-5xl font-bold text-purple-400">19</p>
+            <p className="font-display text-5xl font-bold text-purple-400">20</p>
             <p className="text-white/15 text-[0.6rem] tracking-[0.12em] mt-2">International<br />Design Awards</p>
           </div>
           <div>
