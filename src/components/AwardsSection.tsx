@@ -23,11 +23,11 @@ interface LogoInfo {
 // Map award name prefix to logo file. invert=true for dark logos on dark bg.
 const awardLogoMap: Record<string, LogoInfo> = {
   Pentawards: { src: '/assets/awards/pentawards.png', invert: false },
-  'K-DESIGN': { src: '/assets/awards/kdesign.svg', invert: false },
+  'K-DESIGN': { src: '/assets/awards/kdesign-icon.svg', invert: false },
   'IF ':       { src: '/assets/awards/ifdesign.svg', invert: false },
   EPDA:        { src: '/assets/awards/epda.png', invert: false },
   CORE77:      { src: '/assets/awards/core77.png', invert: true },
-  SPARK:       { src: '/assets/awards/spark.png', invert: false },
+  SPARK:       { src: '/assets/awards/spark.png', invert: true },
 };
 
 function getLogo(name: string): LogoInfo | null {
