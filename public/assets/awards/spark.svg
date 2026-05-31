@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" fill="none">
+  <!-- Spark/flame icon -->
+  <path d="M30 60 Q38 40 42 25 Q46 15 48 10 Q50 18 54 28 Q58 40 60 50 Q62 60 60 70 Q56 82 46 85 Q36 88 30 80 Q24 72 30 60Z" fill="#FF6B00" opacity="0.9"/>
+  <path d="M26 62 Q34 45 38 32 Q41 24 43 20 Q45 28 48 36 Q51 45 53 53 Q55 62 53 70 Q50 79 42 82 Q34 84 29 78 Q25 72 26 62Z" fill="#FFD700"/>
+  <text x="80" y="58" fill="white" font-family="Arial,sans-serif" font-size="28" font-weight="800" letter-spacing="6">SPARK</text>
+  <text x="80" y="78" fill="#FF6B00" font-family="Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="10">DESIGN AWARDS</text>
+</svg>

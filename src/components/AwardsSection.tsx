@@ -15,51 +15,21 @@ interface AwardGroup {
   items: AwardItem[];
 }
 
-interface AwardLogo {
-  letter: string;
-  bg: string;
-  color: string;
-}
-
-// Color schemes inspired by each award's brand identity
-const awardLogos: Record<string, AwardLogo> = {
-  Pentawards:   { letter: 'P',  bg: 'rgba(0,56,168,0.25)',  color: '#5b9bd5' },
-  'K-DESIGN':   { letter: 'K',  bg: 'rgba(220,20,60,0.2)',    color: '#f87171' },
-  'IF':         { letter: 'iF', bg: 'rgba(220,20,60,0.2)',    color: '#ef4444' },
-  EPDA:         { letter: 'E',  bg: 'rgba(212,175,55,0.2)',   color: '#fbbf24' },
-  CORE77:       { letter: 'C',  bg: 'rgba(255,140,0,0.2)',    color: '#fb923c' },
-  SPARK:        { letter: 'S',  bg: 'rgba(255,215,0,0.18)',   color: '#facc15' },
-  '国家奖学金': { letter: '国', bg: 'rgba(220,38,38,0.2)',    color: '#f87171' },
+// Map award name prefix to logo file
+const awardLogoMap: Record<string, string> = {
+  Pentawards: '/assets/awards/pentawards.svg',
+  'K-DESIGN': '/assets/awards/kdesign.svg',
+  'IF ':       '/assets/awards/ifdesign.png',
+  EPDA:        '/assets/awards/epda.png',
+  CORE77:      '/assets/awards/core77.png',
+  SPARK:       '/assets/awards/spark.svg',
 };
 
-function getAwardLogoKey(name: string): string {
-  if (name.includes('Pentawards')) return 'Pentawards';
-  if (name.includes('K-DESIGN')) return 'K-DESIGN';
-  if (name.startsWith('IF ')) return 'IF';
-  if (name.includes('EPDA')) return 'EPDA';
-  if (name.includes('CORE77')) return 'CORE77';
-  if (name.includes('SPARK')) return 'SPARK';
-  if (name.includes('国家奖学金')) return '国家奖学金';
+function getLogo(name: string): string {
+  for (const [key, path] of Object.entries(awardLogoMap)) {
+    if (name.startsWith(key)) return path;
+  }
   return '';
-}
-
-function LogoBadge({ logo }: { logo: AwardLogo }) {
-  return (
-    <div
-      className="shrink-0 flex items-center justify-center rounded-md font-bold"
-      style={{
-        width: 32,
-        height: 32,
-        background: logo.bg,
-        color: logo.color,
-        fontSize: logo.letter.length > 1 ? '0.55rem' : '0.75rem',
-        letterSpacing: '0.02em',
-        border: `1px solid ${logo.color}20`,
-      }}
-    >
-      {logo.letter}
-    </div>
-  );
 }
 
 const awardsByYear: AwardGroup[] = [
@@ -103,7 +73,6 @@ const awardsByYear: AwardGroup[] = [
       { name: 'SPARK Bronze', work: 'Easy-Disassembly Mask' },
       { name: 'Pentawards Bronze', work: 'DELICATE RICE LIQUOR' },
       { name: 'EPDA Honorable Mention', work: 'Easy-Disassembly Mask' },
-      { name: '湖南工业大学研究生国家奖学金', work: '' },
     ],
   },
 ];
@@ -152,18 +121,32 @@ const AwardsSection: FC<Props> = ({ reducedMotion }) => {
               whileHover={{ borderColor: 'rgba(139,92,246,0.2)', background: 'rgba(139,92,246,0.02)' }}
             >
               <p className="font-mono text-[0.55rem] tracking-[0.2em] mb-5 text-purple-400/70">{a.year}</p>
-              <div className="space-y-3.5">
+              <div className="space-y-4">
                 {a.items.map((item) => {
-                  const logoKey = getAwardLogoKey(item.name);
-                  const logo = logoKey ? awardLogos[logoKey] : null;
+                  const logo = getLogo(item.name);
                   return (
-                    <div key={item.name + item.work} className="flex items-start gap-3">
-                      {logo && <LogoBadge logo={logo} />}
-                      {!logo && <div className="w-8 shrink-0" />}
+                    <div key={item.name + item.work} className="flex items-center gap-3">
+                      {logo ? (
+                        <img
+                          src={logo}
+                          alt=""
+                          className="shrink-0 object-contain"
+                          style={{
+                            width: 36,
+                            height: 36,
+                            filter: 'brightness(0.95)',
+                          }}
+                          onError={(e) => {
+                            (e.target as HTMLElement).style.display = 'none';
+                          }}
+                        />
+                      ) : (
+                        <div className="w-9 shrink-0" />
+                      )}
                       <div className="min-w-0">
                         <p className="text-white/75 text-xs font-semibold leading-snug">{item.name}</p>
                         {item.work && (
-                          <p className="text-white/20 text-[0.6rem] italic mt-0.5 truncate">{item.work}</p>
+                          <p className="text-white/18 text-[0.6rem] italic mt-0.5 truncate">{item.work}</p>
                         )}
                       </div>
                     </div>
