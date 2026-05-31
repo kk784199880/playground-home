@@ -14,7 +14,7 @@ const timeline = [
   },
   {
     year: '2022–26',
-    title: 'Guangzhou Software College',
+    title: 'Guangzhou University of Software',
     desc: 'Faculty member. Guided students to KDESIGN, EPDA, Spark awards.',
     location: 'Guangzhou',
   },

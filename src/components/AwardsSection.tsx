@@ -5,11 +5,68 @@ interface Props {
   reducedMotion: boolean;
 }
 
-const awardsByYear = [
+interface AwardItem {
+  name: string;
+  work: string;
+}
+
+interface AwardGroup {
+  year: string;
+  items: AwardItem[];
+}
+
+interface AwardLogo {
+  letter: string;
+  bg: string;
+  color: string;
+}
+
+// Color schemes inspired by each award's brand identity
+const awardLogos: Record<string, AwardLogo> = {
+  Pentawards:   { letter: 'P',  bg: 'rgba(0,56,168,0.25)',  color: '#5b9bd5' },
+  'K-DESIGN':   { letter: 'K',  bg: 'rgba(220,20,60,0.2)',    color: '#f87171' },
+  'IF':         { letter: 'iF', bg: 'rgba(220,20,60,0.2)',    color: '#ef4444' },
+  EPDA:         { letter: 'E',  bg: 'rgba(212,175,55,0.2)',   color: '#fbbf24' },
+  CORE77:       { letter: 'C',  bg: 'rgba(255,140,0,0.2)',    color: '#fb923c' },
+  SPARK:        { letter: 'S',  bg: 'rgba(255,215,0,0.18)',   color: '#facc15' },
+  '国家奖学金': { letter: '国', bg: 'rgba(220,38,38,0.2)',    color: '#f87171' },
+};
+
+function getAwardLogoKey(name: string): string {
+  if (name.includes('Pentawards')) return 'Pentawards';
+  if (name.includes('K-DESIGN')) return 'K-DESIGN';
+  if (name.startsWith('IF ')) return 'IF';
+  if (name.includes('EPDA')) return 'EPDA';
+  if (name.includes('CORE77')) return 'CORE77';
+  if (name.includes('SPARK')) return 'SPARK';
+  if (name.includes('国家奖学金')) return '国家奖学金';
+  return '';
+}
+
+function LogoBadge({ logo }: { logo: AwardLogo }) {
+  return (
+    <div
+      className="shrink-0 flex items-center justify-center rounded-md font-bold"
+      style={{
+        width: 32,
+        height: 32,
+        background: logo.bg,
+        color: logo.color,
+        fontSize: logo.letter.length > 1 ? '0.55rem' : '0.75rem',
+        letterSpacing: '0.02em',
+        border: `1px solid ${logo.color}20`,
+      }}
+    >
+      {logo.letter}
+    </div>
+  );
+}
+
+const awardsByYear: AwardGroup[] = [
   {
     year: '2025',
     items: [
-      { name: 'Pentawards 铜奖', work: 'Leng Cui' },
+      { name: 'Pentawards Bronze', work: 'Leng Cui' },
       { name: 'K-DESIGN WINNER', work: 'GREEN WALKER' },
       { name: 'IF STUDENT AWARD TOP 300', work: 'Gradually Entering the Chess World' },
       { name: 'EPDA WINNER ×3', work: 'Tang Grace / Lengcui / Chess Realm' },
@@ -21,7 +78,7 @@ const awardsByYear = [
     items: [
       { name: 'IF DESIGN AWARD WINNER', work: 'zhuchun' },
       { name: 'IF STUDENT AWARD TOP 300', work: 'BAMBUREVIVE CHAIR' },
-      { name: 'Pentawards NOMINATION', work: 'YANPOU' },
+      { name: 'Pentawards Nomination', work: 'YANPOU' },
     ],
   },
   {
@@ -35,7 +92,7 @@ const awardsByYear = [
     items: [
       { name: 'EPDA TOP DESIGN', work: 'One Hand Measuring Ruler' },
       { name: 'CORE77 DESIGN AWARDS', work: 'One Hand Measuring Ruler' },
-      { name: 'Pentawards NOMINATION', work: 'Etiquette of Pottery' },
+      { name: 'Pentawards Nomination', work: 'Etiquette of Pottery' },
     ],
   },
   {
@@ -44,9 +101,9 @@ const awardsByYear = [
       { name: 'SPARK Silver', work: 'One-Hand Measuring Ruler' },
       { name: 'SPARK Silver', work: 'Shockproof & Cushioning Goblet Package' },
       { name: 'SPARK Bronze', work: 'Easy-Disassembly Mask' },
-      { name: 'Pentawards BRONZE', work: 'DELICATE RICE LIQUOR' },
+      { name: 'Pentawards Bronze', work: 'DELICATE RICE LIQUOR' },
       { name: 'EPDA Honorable Mention', work: 'Easy-Disassembly Mask' },
-      { name: 'HUT 研究生国家奖学金', work: '' },
+      { name: '湖南工业大学研究生国家奖学金', work: '' },
     ],
   },
 ];
@@ -85,25 +142,33 @@ const AwardsSection: FC<Props> = ({ reducedMotion }) => {
         </motion.h2>
 
         {/* Award cards by year */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-12">
           {awardsByYear.map((a, i) => (
             <motion.div
               key={a.year}
               className="p-5 rounded-2xl"
               style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)' }}
               initial={init} whileInView="visible" variants={variants} custom={i + 2} viewport={{ once: true }}
-              whileHover={{ borderColor: 'rgba(139,92,246,0.25)', background: 'rgba(139,92,246,0.03)' }}
+              whileHover={{ borderColor: 'rgba(139,92,246,0.2)', background: 'rgba(139,92,246,0.02)' }}
             >
-              <p className="font-mono text-[0.55rem] tracking-[0.2em] mb-4 text-purple-400/70">{a.year}</p>
-              <div className="space-y-2.5">
-                {a.items.map((item) => (
-                  <div key={item.name + item.work}>
-                    <p className="text-white/70 text-xs font-semibold leading-snug">{item.name}</p>
-                    {item.work && (
-                      <p className="text-white/20 text-[0.6rem] italic mt-0.5">{item.work}</p>
-                    )}
-                  </div>
-                ))}
+              <p className="font-mono text-[0.55rem] tracking-[0.2em] mb-5 text-purple-400/70">{a.year}</p>
+              <div className="space-y-3.5">
+                {a.items.map((item) => {
+                  const logoKey = getAwardLogoKey(item.name);
+                  const logo = logoKey ? awardLogos[logoKey] : null;
+                  return (
+                    <div key={item.name + item.work} className="flex items-start gap-3">
+                      {logo && <LogoBadge logo={logo} />}
+                      {!logo && <div className="w-8 shrink-0" />}
+                      <div className="min-w-0">
+                        <p className="text-white/75 text-xs font-semibold leading-snug">{item.name}</p>
+                        {item.work && (
+                          <p className="text-white/20 text-[0.6rem] italic mt-0.5 truncate">{item.work}</p>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </motion.div>
           ))}

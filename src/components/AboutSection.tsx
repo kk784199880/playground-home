@@ -72,7 +72,7 @@ const AboutSection: FC<Props> = ({ reducedMotion }) => {
             </p>
             <p>
               He earned his B.A. (2019) and M.F.A. (2022) from HUT, then joined{' '}
-              <strong className="text-white/75">Guangzhou Software College</strong> as a faculty member (2022–2026).
+              <strong className="text-white/75">Guangzhou University of Software</strong> as a faculty member (2022–2026).
               In September 2026, he returned to HUT to pursue a <strong className="text-white/75">full-time Ph.D. in Design</strong>.
             </p>
             <p className="text-white/20 text-xs leading-relaxed">

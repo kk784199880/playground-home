@@ -36,82 +36,28 @@ const papers = [
   {
     title: '纸质家具设计评价：感性工学与AHP法',
     titleZh: 'Evaluation of Paper Furniture Design',
-    journal: '包装工程 (北大核心)',
+    journal: '包装工程',
     tag: 'PKU Core',
     year: '2025',
-    tagColor: 'rgba(255,255,255,0.4)',
+    tagColor: 'rgba(251,191,36,0.7)',
     author: 'First Author',
   },
   {
     title: '感质理论下的纸质家具设计策略研究',
     titleZh: 'Paper Furniture Design Strategy Under Qualia Theory',
-    journal: '家具与室内装饰 (北大核心)',
+    journal: '家具与室内装饰',
     tag: 'PKU Core',
     year: '2025',
-    tagColor: 'rgba(255,255,255,0.4)',
+    tagColor: 'rgba(251,191,36,0.7)',
     author: 'First Author',
   },
   {
     title: 'AIGC协同的医废物流机器人设计策略',
     titleZh: 'AIGC-Aided Medical Waste Logistics Robot Design',
-    journal: '工业工程设计 (CSSCI扩展版)',
+    journal: '工业工程设计',
     tag: 'CSSCI-E',
     year: '2025',
-    tagColor: 'rgba(255,255,255,0.4)',
-    author: 'First Author',
-  },
-  {
-    title: 'Heritage Strategies of Chinese Furniture Artistry',
-    titleZh: '可持续设计下中国家具传承策略',
-    journal: 'Critical Humanistic Social Theory',
-    tag: 'Journal',
-    year: '2025',
-    tagColor: 'rgba(255,255,255,0.3)',
-    author: 'First Author',
-  },
-  {
-    title: 'APP Design for Albinism Family Psychological Therapy',
-    titleZh: '基于用户需求的白化病家庭心理治疗APP设计',
-    journal: 'Journal of Advances in Engineering and Technology',
-    tag: 'Journal',
-    year: '2025',
-    tagColor: 'rgba(255,255,255,0.3)',
-    author: 'First Author',
-  },
-  {
-    title: '岭南客家文化的文创产品设计策略与实践',
-    titleZh: 'Cultural Creative Design Strategy of Lingnan Hakka Culture',
-    journal: '绿色包装',
-    tag: 'Journal',
-    year: '2024',
-    tagColor: 'rgba(255,255,255,0.3)',
-    author: 'First Author',
-  },
-  {
-    title: '感性工学在智慧养老产品设计中的应用分析',
-    titleZh: 'Kansei Engineering in Smart Elderly Product Design',
-    journal: '上海包装',
-    tag: 'Journal',
-    year: '2023',
-    tagColor: 'rgba(255,255,255,0.3)',
-    author: 'First Author',
-  },
-  {
-    title: '医疗废物运输产品设计研究',
-    titleZh: 'Medical Waste Transport Product Design',
-    journal: '工业设计',
-    tag: 'Journal',
-    year: '2021',
-    tagColor: 'rgba(255,255,255,0.3)',
-    author: 'First Author',
-  },
-  {
-    title: 'VR技术的高铁应急操作训练设计研究',
-    titleZh: 'VR-Based High-Speed Rail Emergency Training Design',
-    journal: '电脑知识与技术',
-    tag: 'Journal',
-    year: '2021',
-    tagColor: 'rgba(255,255,255,0.3)',
+    tagColor: 'rgba(34,211,238,0.6)',
     author: 'First Author',
   },
 ];
@@ -121,7 +67,7 @@ const variants = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.06, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: { delay: i * 0.08, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
   }),
 };
 
@@ -139,46 +85,59 @@ const ResearchSection: FC<Props> = ({ reducedMotion }) => {
           RESEARCH & PUBLICATIONS
         </motion.p>
         <motion.h2
-          className="font-display text-white mb-16 leading-none text-center"
+          className="font-display text-white mb-5 leading-none text-center"
           style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, letterSpacing: '-0.02em' }}
           initial={init} whileInView="visible" variants={variants} custom={1} viewport={{ once: true }}
         >
           Research
           <span className="block text-sm font-normal italic mt-1 opacity-25" style={{ fontFamily: 'Inter', fontWeight: 300 }}>
-            学术研究 · 12 Papers
+            学术研究
           </span>
         </motion.h2>
+        <motion.p
+          className="text-center text-white/10 text-[0.6rem] font-mono tracking-[0.12em] mb-14"
+          initial={init} whileInView="visible" variants={variants} custom={2} viewport={{ once: true }}
+        >
+          北大核心及以上 · PKU Core & Above
+        </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {papers.map((p, i) => (
             <motion.div
               key={p.title}
-              className="p-4 rounded-2xl flex flex-col"
+              className="p-5 rounded-2xl flex flex-col"
               style={{
                 background: 'rgba(255,255,255,0.02)',
                 border: '1px solid rgba(255,255,255,0.05)',
               }}
-              initial={init} whileInView="visible" variants={variants} custom={i + 2} viewport={{ once: true }}
+              initial={init} whileInView="visible" variants={variants} custom={i + 3} viewport={{ once: true }}
               whileHover={{ borderColor: 'rgba(139,92,246,0.3)', background: 'rgba(139,92,246,0.04)' }}
             >
-              <div className="flex items-center gap-2 mb-2">
+              <div className="flex items-center gap-2 mb-3">
                 <span
-                  className="inline-block px-2 py-0.5 rounded-full font-mono text-[0.5rem] tracking-[0.12em]"
+                  className="inline-block px-2.5 py-0.5 rounded-full font-mono text-[0.5rem] tracking-[0.12em]"
                   style={{ background: 'rgba(139,92,246,0.12)', color: p.tagColor }}
                 >
                   {p.tag}
                 </span>
                 <span className="font-mono text-[0.55rem] text-white/12">{p.year}</span>
               </div>
-              <h4 className="text-white/80 text-xs font-semibold leading-snug mb-1">{p.title}</h4>
-              <p className="text-white/35 text-[0.65rem] mb-2">{p.journal}</p>
-              <p className="text-white/12 text-[0.55rem] font-mono mt-auto" style={{ borderTop: '1px solid rgba(255,255,255,0.04)', paddingTop: 8 }}>
+              <h4 className="text-white/80 text-sm font-semibold leading-snug mb-1.5">{p.title}</h4>
+              <p className="text-white/35 text-xs mb-3">{p.journal}</p>
+              <p className="text-white/12 text-[0.55rem] font-mono mt-auto" style={{ borderTop: '1px solid rgba(255,255,255,0.04)', paddingTop: 10 }}>
                 {p.author}
                 <span className="block opacity-50">{p.titleZh}</span>
               </p>
             </motion.div>
           ))}
         </div>
+
+        <motion.p
+          className="text-center text-white/08 text-[0.55rem] font-mono mt-10 tracking-[0.1em]"
+          initial={init} whileInView="visible" variants={variants} custom={9} viewport={{ once: true }}
+        >
+          12 papers total · 6 selected above PKU Core threshold
+        </motion.p>
       </div>
     </section>
   );
