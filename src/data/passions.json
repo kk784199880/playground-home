@@ -1,0 +1,10 @@
+{
+  "items": [
+    { "icon": "🏀", "name": "Basketball", "desc": "Team player on and off court.", "zh": "篮球 · 团队竞技" },
+    { "icon": "🎮", "name": "PC Gaming", "desc": "Strategy, FPS, open-world — games teach systems thinking.", "zh": "电竞 · 策略游戏" },
+    { "icon": "🏃", "name": "Running", "desc": "5K to half-marathon. Endurance builds creative stamina.", "zh": "长跑 · 耐力训练" },
+    { "icon": "💪", "name": "Fitness", "desc": "Discipline in the gym translates to discipline in work.", "zh": "健身 · 力量训练" },
+    { "icon": "✈️", "name": "Travel", "desc": "Exploring new places fuels fresh design perspectives.", "zh": "旅行 · 探索" },
+    { "icon": "📷", "name": "Photography", "desc": "Composition, light, moment — design in every frame.", "zh": "摄影 · 构图" }
+  ]
+}

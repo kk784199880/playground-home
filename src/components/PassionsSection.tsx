@@ -1,18 +1,10 @@
 import { type FC } from 'react';
 import { motion } from 'framer-motion';
+import passions from '../data/passions.json';
 
 interface Props {
   reducedMotion: boolean;
 }
-
-const hobbies = [
-  { icon: '\u{1F3C0}', name: 'Basketball', desc: 'Team player on and off court.', zh: '篮球 · 团队竞技' },
-  { icon: '\u{1F3AE}', name: 'PC Gaming', desc: 'Strategy, FPS, open-world — games teach systems thinking.', zh: '电竞 · 策略游戏' },
-  { icon: '\u{1F3C3}', name: 'Running', desc: '5K to half-marathon. Endurance builds creative stamina.', zh: '长跑 · 耐力训练' },
-  { icon: '\u{1F4AA}', name: 'Fitness', desc: 'Discipline in the gym translates to discipline in work.', zh: '健身 · 力量训练' },
-  { icon: '✈️', name: 'Travel', desc: 'Exploring new places fuels fresh design perspectives.', zh: '旅行 · 探索' },
-  { icon: '\u{1F4F7}', name: 'Photography', desc: 'Composition, light, moment — design in every frame.', zh: '摄影 · 构图' },
-];
 
 const variants = {
   hidden: { opacity: 0, y: 40 },
@@ -54,7 +46,7 @@ const PassionsSection: FC<Props> = ({ reducedMotion }) => {
         </motion.p>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {hobbies.map((h, i) => (
+          {passions.items.map((h, i) => (
             <motion.div
               key={h.name}
               className="p-5 rounded-2xl text-center group cursor-default"

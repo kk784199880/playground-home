@@ -1,0 +1,11 @@
+{
+  "10.1038/s41598-026-54522-z": { "tag": "SCI · JCR Q2", "tagColor": "#a78bfa", "author": "First Author" },
+  "10.3390/biomimetics11040266": { "tag": "SCI · JCR Q1", "tagColor": "#a78bfa", "author": "First Author" },
+  "10.1371/journal.pone.0341450": { "tag": "SCI · JCR Q2", "tagColor": "#a78bfa", "author": "Corresponding Author" },
+  "10.1038/s41598-026-38532-5": { "tag": "SCI · JCR Q2", "tagColor": "#a78bfa", "author": "First Author" },
+  "10.3390/biomimetics10100682": { "tag": "SCI · JCR Q1", "tagColor": "#a78bfa", "author": "First Author" },
+  "10.1016/j.rineng.2025.105989": { "tag": "EI · JCR Q2", "tagColor": "#60a5fa", "author": "First Author" },
+  "10.16771/j.cn43-1247/ts.2025.04.006": { "tag": "PKU Core", "tagColor": "rgba(251,191,36,0.7)", "author": "First Author" },
+  "10.19798/j.cnki.2096-6946.2025.02.006": { "tag": "CSSCI-E", "tagColor": "rgba(34,211,238,0.6)", "author": "First Author" },
+  "10.19362/j.cnki.cn10-1400/tb.2024.10.043": { "tag": "PKU Core", "tagColor": "rgba(251,191,36,0.7)", "author": "First Author" }
+}

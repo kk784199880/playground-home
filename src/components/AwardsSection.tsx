@@ -1,18 +1,9 @@
 import { type FC } from 'react';
 import { motion } from 'framer-motion';
+import awardsData from '../data/awards.json';
 
 interface Props {
   reducedMotion: boolean;
-}
-
-interface AwardItem {
-  name: string;
-  work: string;
-}
-
-interface AwardGroup {
-  year: string;
-  items: AwardItem[];
 }
 
 interface LogoInfo {
@@ -20,15 +11,7 @@ interface LogoInfo {
   invert: boolean;
 }
 
-// Map award name prefix to logo file. invert=true for dark logos on dark bg.
-const awardLogoMap: Record<string, LogoInfo> = {
-  Pentawards: { src: '/assets/awards/pentawards.png', invert: false },
-  'K-DESIGN': { src: '/assets/awards/kdesign-icon.svg', invert: false },
-  'IF ':       { src: '/assets/awards/ifdesign.svg', invert: false },
-  EPDA:        { src: '/assets/awards/epda.png', invert: false },
-  CORE77:      { src: '/assets/awards/core77.png', invert: true },
-  SPARK:       { src: '/assets/awards/spark.png', invert: false },
-};
+const awardLogoMap: Record<string, LogoInfo> = awardsData.logoMap;
 
 function getLogo(name: string): LogoInfo | null {
   for (const [key, info] of Object.entries(awardLogoMap)) {
@@ -36,51 +19,6 @@ function getLogo(name: string): LogoInfo | null {
   }
   return null;
 }
-
-const awardsByYear: AwardGroup[] = [
-  {
-    year: '2025',
-    items: [
-      { name: 'Pentawards Bronze', work: 'Leng Cui' },
-      { name: 'K-DESIGN WINNER', work: 'GREEN WALKER' },
-      { name: 'IF STUDENT AWARD TOP 300', work: 'Gradually Entering the Chess World' },
-      { name: 'EPDA WINNER ×3', work: 'Tang Grace / Lengcui / Chess Realm' },
-      { name: 'EPDA Honorable Mention', work: 'THE WEIGHT OF NEW BLOOD' },
-    ],
-  },
-  {
-    year: '2024',
-    items: [
-      { name: 'IF DESIGN AWARD WINNER', work: 'zhuchun' },
-      { name: 'IF STUDENT AWARD TOP 300', work: 'BAMBUREVIVE CHAIR' },
-      { name: 'Pentawards Nomination', work: 'YANPOU' },
-    ],
-  },
-  {
-    year: '2023',
-    items: [
-      { name: 'EPDA TOP DESIGN', work: 'STARRY-Braille Generator' },
-    ],
-  },
-  {
-    year: '2022',
-    items: [
-      { name: 'EPDA TOP DESIGN', work: 'One Hand Measuring Ruler' },
-      { name: 'CORE77 DESIGN AWARDS', work: 'One Hand Measuring Ruler' },
-      { name: 'Pentawards Nomination', work: 'Etiquette of Pottery' },
-    ],
-  },
-  {
-    year: '2021',
-    items: [
-      { name: 'SPARK Silver', work: 'One-Hand Measuring Ruler' },
-      { name: 'SPARK Silver', work: 'Shockproof & Cushioning Goblet Package' },
-      { name: 'SPARK Bronze', work: 'Easy-Disassembly Mask' },
-      { name: 'Pentawards Bronze', work: 'DELICATE RICE LIQUOR' },
-      { name: 'EPDA Honorable Mention', work: 'Easy-Disassembly Mask' },
-    ],
-  },
-];
 
 const variants = {
   hidden: { opacity: 0, y: 40 },
@@ -117,7 +55,7 @@ const AwardsSection: FC<Props> = ({ reducedMotion }) => {
 
         {/* Award cards by year */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-12">
-          {awardsByYear.map((a, i) => (
+          {awardsData.awardsByYear.map((a, i) => (
             <motion.div
               key={a.year}
               className="p-5 rounded-2xl"

@@ -1,48 +1,10 @@
 import { type FC } from 'react';
 import { motion } from 'framer-motion';
+import timeline from '../data/timeline.json';
 
 interface Props {
   reducedMotion: boolean;
 }
-
-const timeline = [
-  {
-    year: '2026',
-    title: 'Ph.D. at HUT',
-    desc: 'Enrolled as full-time Ph.D. candidate in Design at Hunan University of Technology.',
-    location: 'HUT · Zhuzhou',
-  },
-  {
-    year: '2022–26',
-    title: 'Guangzhou University of Software',
-    desc: 'Faculty member. Guided students to KDESIGN, EPDA, Spark awards.',
-    location: 'Guangzhou',
-  },
-  {
-    year: '2022',
-    title: 'M.F.A. from HUT',
-    desc: 'Master of Fine Arts. Won Pentawards Finalist & Core77 Winner same year.',
-    location: 'HUT · 2022.06',
-  },
-  {
-    year: '2021',
-    title: 'WPO WorldStar',
-    desc: 'WPO WorldStar Student · Pentawards Bronze · Core77 Winner · Spark Silver.',
-    location: 'Global · 5+ Awards',
-  },
-  {
-    year: '2019',
-    title: 'B.A. from HUT',
-    desc: "Bachelor's degree. Entered M.F.A. program the same year.",
-    location: 'HUT · Zhuzhou',
-  },
-  {
-    year: '2025',
-    title: 'Editorial Board',
-    desc: 'Appointed to Bulletin of Renewable and Sustainable Energy (2025–2028).',
-    location: 'Singapore',
-  },
-];
 
 const variants = {
   hidden: { opacity: 0, y: 40 },
@@ -83,10 +45,9 @@ const TimelineSection: FC<Props> = ({ reducedMotion }) => {
           Academic & professional milestones
         </motion.p>
 
-        {/* Horizontal scroll timeline */}
         <div className="overflow-x-auto pb-6" style={{ scrollbarWidth: 'thin' }}>
           <div className="flex gap-5 min-w-max px-2">
-            {timeline.map((t, i) => (
+            {timeline.entries.map((t, i) => (
               <motion.div
                 key={t.year + t.title}
                 className="w-60 shrink-0"

@@ -1,14 +1,10 @@
 import { type FC } from 'react';
 import { motion } from 'framer-motion';
+import skills from '../data/skills.json';
 
 interface Props {
   reducedMotion: boolean;
 }
-
-const skills = [
-  'C4D', 'Rhino', 'Keyshot', 'Photoshop', 'Illustrator',
-  'After Effects', 'Premiere', 'Stable Diffusion', 'Midjourney', 'DeepSeek',
-];
 
 const variants = {
   hidden: { opacity: 0, y: 40 },
@@ -47,7 +43,7 @@ const SkillsSection: FC<Props> = ({ reducedMotion }) => {
           className="flex flex-wrap items-center justify-center gap-2.5"
           initial={init} whileInView="visible" variants={variants} custom={2} viewport={{ once: true }}
         >
-          {skills.map((s) => (
+          {skills.items.map((s) => (
             <span
               key={s}
               className="px-4 py-2 rounded-full font-mono text-[0.65rem] tracking-[0.1em] transition-all duration-300 cursor-default"

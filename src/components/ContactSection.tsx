@@ -1,17 +1,10 @@
 import { type FC } from 'react';
 import { motion } from 'framer-motion';
+import contact from '../data/contact.json';
 
 interface Props {
   reducedMotion: boolean;
 }
-
-const contactItems = [
-  { label: 'Name', value: 'Wu Fan · 吴凡' },
-  { label: 'Email', value: '784199880@qq.com', href: 'mailto:784199880@qq.com' },
-  { label: 'WeChat', value: 'kk784199880' },
-  { label: 'Phone', value: '+86 185-9340-8031' },
-  { label: 'Portfolio', value: 'puxiang.com/wuxiaofan', href: 'https://www.puxiang.com/wuxiaofan' },
-];
 
 const variants = {
   hidden: { opacity: 0, y: 40 },
@@ -51,7 +44,6 @@ const ContactSection: FC<Props> = ({ reducedMotion }) => {
           style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)' }}
           initial={init} whileInView="visible" variants={variants} custom={2} viewport={{ once: true }}
         >
-          {/* Avatar */}
           <div className="w-20 h-20 rounded-full overflow-hidden mx-auto mb-7" style={{ background: 'rgba(255,255,255,0.03)' }}>
             <img
               src="/assets/portrait-contact.jpg"
@@ -61,7 +53,7 @@ const ContactSection: FC<Props> = ({ reducedMotion }) => {
           </div>
 
           <div className="space-y-3.5 text-sm">
-            {contactItems.map(({ label, value, href }) => (
+            {contact.items.map(({ label, value, href }) => (
               <div key={label} className="flex justify-center gap-3">
                 <span className="font-mono text-[0.6rem] tracking-[0.1em] opacity-15 w-16 text-right pt-0.5">{label}</span>
                 {href ? (

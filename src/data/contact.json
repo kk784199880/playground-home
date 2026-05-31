@@ -1,0 +1,9 @@
+{
+  "items": [
+    { "label": "Name", "value": "Wu Fan · 吴凡", "href": "" },
+    { "label": "Email", "value": "784199880@qq.com", "href": "mailto:784199880@qq.com" },
+    { "label": "WeChat", "value": "kk784199880", "href": "" },
+    { "label": "Phone", "value": "+86 185-9340-8031", "href": "" },
+    { "label": "Portfolio", "value": "puxiang.com/wuxiaofan", "href": "https://www.puxiang.com/wuxiaofan" }
+  ]
+}
