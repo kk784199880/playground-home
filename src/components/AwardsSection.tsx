@@ -15,21 +15,26 @@ interface AwardGroup {
   items: AwardItem[];
 }
 
-// Map award name prefix to logo file
-const awardLogoMap: Record<string, string> = {
-  Pentawards: '/assets/awards/pentawards.png',
-  'K-DESIGN': '/assets/awards/kdesign.svg',
-  'IF ':       '/assets/awards/ifdesign.svg',
-  EPDA:        '/assets/awards/epda.png',
-  CORE77:      '/assets/awards/core77.png',
-  SPARK:       '/assets/awards/spark.svg',
+interface LogoInfo {
+  src: string;
+  invert: boolean;
+}
+
+// Map award name prefix to logo file. invert=true for dark logos on dark bg.
+const awardLogoMap: Record<string, LogoInfo> = {
+  Pentawards: { src: '/assets/awards/pentawards.png', invert: false },
+  'K-DESIGN': { src: '/assets/awards/kdesign.svg', invert: false },
+  'IF ':       { src: '/assets/awards/ifdesign.svg', invert: false },
+  EPDA:        { src: '/assets/awards/epda.png', invert: false },
+  CORE77:      { src: '/assets/awards/core77.png', invert: true },
+  SPARK:       { src: '/assets/awards/spark.png', invert: false },
 };
 
-function getLogo(name: string): string {
-  for (const [key, path] of Object.entries(awardLogoMap)) {
-    if (name.startsWith(key)) return path;
+function getLogo(name: string): LogoInfo | null {
+  for (const [key, info] of Object.entries(awardLogoMap)) {
+    if (name.startsWith(key)) return info;
   }
-  return '';
+  return null;
 }
 
 const awardsByYear: AwardGroup[] = [
@@ -128,13 +133,13 @@ const AwardsSection: FC<Props> = ({ reducedMotion }) => {
                     <div key={item.name + item.work} className="flex items-center gap-3">
                       {logo ? (
                         <img
-                          src={logo}
+                          src={logo.src}
                           alt=""
                           className="shrink-0 object-contain"
                           style={{
                             width: 36,
                             height: 36,
-                            filter: 'brightness(0.95)',
+                            filter: logo.invert ? 'brightness(0) invert(1)' : 'brightness(0.95)',
                           }}
                           onError={(e) => {
                             (e.target as HTMLElement).style.display = 'none';
